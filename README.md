@@ -1,1 +1,1 @@
-# vendor-management-system
+# vendor-system
