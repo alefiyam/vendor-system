@@ -99,6 +99,16 @@ def all_purchase_orders(request):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+@api_view(['GET'])
+def get_purchase_order(request,po_number):
+    po = purchaseOrder.objects.get(po_number=po_number)
+        # if there is something in po else raise error
+    if po:
+        serializer = purchaseOrderSerializer(po)
+        return Response(serializer.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 @api_view(['POST'])
 def update_purchase_orders(request, po_number):
     po = purchaseOrder.objects.get(po_number=po_number)
@@ -151,7 +161,7 @@ def vendor_performance(request,vendor_id):
         if response_list:
             for i in response_list:
                 response_sum=response_sum+i
-            average_response_time =  response_sum/total_po        
+            average_response_time =  response_sum/total_po
             print(average_response_time)
         else:
             average_response_time=None

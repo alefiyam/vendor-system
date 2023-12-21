@@ -12,6 +12,7 @@ urlpatterns = [
     #purchase orders
     path('create_purchase_orders/', views.create_purchase_orders, name='create-purchase-orders'),
     path('all_purchase_orders/', views.all_purchase_orders, name='all-purchase-orders'),
+     path('get_purchase_order/<str:po_number>/', views.get_purchase_order, name='get-purchase-order'),
     path('update_purchase_orders/<str:po_number>/', views.update_purchase_orders, name='update-purchase-orders'),
     path('delete_purchase_orders/<str:po_number>/delete/', views.delete_purchase_orders, name='delete-purchase-orders'),
     #Update Acknowledgment Endpoint
